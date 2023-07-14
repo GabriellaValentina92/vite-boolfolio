@@ -9,10 +9,24 @@ export default {
 </script>
 
 <template>
-  <!-- <h1>BOOLFOLIO</h1> -->
-  <projectfolio></projectfolio>
+  <div class="container">
+    <projectfolio></projectfolio>
+  </div>
 </template>
 
 <style lang="scss">
 @import "bootstrap/scss/bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 10px auto;
+  padding: 0.5rem;
+}
 </style>
