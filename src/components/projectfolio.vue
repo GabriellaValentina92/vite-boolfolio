@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       arrProject: [],
+      page: 1,
       nPage: 1,
     };
   },
@@ -14,7 +15,7 @@ export default {
       axios
         .get("http://localhost:8080/api/projects", {
           params: {
-            page: this.nPage,
+            page: this.page,
           },
         })
         .then(
@@ -26,7 +27,7 @@ export default {
     },
 
     changePages(page) {
-      this.nPage = page;
+      this.page = page;
       this.getProject();
     },
   },
@@ -35,7 +36,7 @@ export default {
     axios
       .get("http://localhost:8080/api/projects", {
         params: {
-          page: this.nPage,
+          page: this.page,
         },
       })
       .then(
@@ -44,6 +45,11 @@ export default {
           (this.nPage = response.data.last_page)
         )
       );
+  },
+  watch: {
+    page() {
+      this.getProject();
+    },
   },
 };
 </script>
@@ -57,21 +63,21 @@ export default {
 
   <nav>
     <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
+      <li class="page-item" :class="{ disabled: page == 1 }">
+        <a class="page-link" @click="page--">Previous</a>
       </li>
 
       <li
         v-for="page in nPage"
         :key="page"
         class="page-item"
-        :class="{ active: page == nPage }"
+        :class="{ active: page == page }"
       >
         <span class="page-link" @click="changePages(page)">{{ page }}</span>
       </li>
 
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      <li class="page-item" :class="{ disabled: page == nPage }">
+        <a class="page-link" href="#" @click="page++">Next</a>
       </li>
     </ul>
   </nav>
