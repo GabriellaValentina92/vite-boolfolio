@@ -1,7 +1,12 @@
 <script>
 import axios from "axios";
+import projectCard from "./projectCard.vue";
 
 export default {
+  components: {
+    projectCard,
+  },
+
   data() {
     return {
       arrProject: [],
@@ -57,9 +62,11 @@ export default {
 <template>
   <h1>BOOLFOLIO</h1>
   <h3>I miei Progetti</h3>
-  <ul>
-    <li v-for="project in arrProject" :key="project.id">{{ project.title }}</li>
-  </ul>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+    <div class="col" v-for="project in arrProject" :key="project.id">
+      <projectCard :objProject="project" />
+    </div>
+  </div>
 
   <nav>
     <ul class="pagination">
@@ -73,7 +80,7 @@ export default {
         class="page-item"
         :class="{ active: page == page }"
       >
-        <span class="page-link" @click="changePages(page)">{{ page }}</span>
+        <a class="page-link" @click="changePages(page)">{{ page }}</a>
       </li>
 
       <li class="page-item" :class="{ disabled: page == nPage }">
