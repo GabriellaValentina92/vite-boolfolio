@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import projectCard from "./projectCard.vue";
+import { store } from "../store";
 
 export default {
   components: {
@@ -12,13 +13,14 @@ export default {
       arrProject: [],
       page: 1,
       nPage: 1,
+      store,
     };
   },
 
   methods: {
     getProject() {
       axios
-        .get("http://localhost:8080/api/projects", {
+        .get(this.store.baseUrl + "api/projects", {
           params: {
             page: this.page,
           },
@@ -39,7 +41,7 @@ export default {
 
   created() {
     axios
-      .get("http://localhost:8080/api/projects", {
+      .get(this.store.baseUrl + "api/projects", {
         params: {
           page: this.page,
         },

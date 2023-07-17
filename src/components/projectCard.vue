@@ -16,10 +16,10 @@ export default {
       class="card-img-top"
       alt="objProject.title"
     />
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
       <h5 class="card-title">{{ objProject.title }}</h5>
       <p class="card-text">{{ objProject.project_description }}</p>
-      <a href="#" class="btn btn-primary">View</a>
+      <a href="#" class="btn btn-primary mt-auto">View</a>
     </div>
   </div>
 </template>
