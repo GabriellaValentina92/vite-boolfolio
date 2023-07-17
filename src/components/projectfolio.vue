@@ -62,8 +62,6 @@ export default {
 </script>
 
 <template>
-  <h1>BOOLFOLIO</h1>
-  <h3>I miei Progetti</h3>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
     <div class="col" v-for="project in arrProject" :key="project.id">
       <projectCard :objProject="project" />

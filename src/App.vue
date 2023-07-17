@@ -1,16 +1,19 @@
 <script>
 import projectfolio from "./components/projectfolio.vue";
+import navbar from "./components/navbar.vue";
 
 export default {
   components: {
     projectfolio,
+    navbar,
   },
 };
 </script>
 
 <template>
+  <navbar></navbar>
   <div class="container">
-    <projectfolio></projectfolio>
+    <router-view></router-view>
   </div>
 </template>
 
