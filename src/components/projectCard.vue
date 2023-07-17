@@ -19,7 +19,11 @@ export default {
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">{{ objProject.title }}</h5>
       <p class="card-text">{{ objProject.project_description }}</p>
-      <a href="#" class="btn btn-primary mt-auto">View</a>
+      <router-link
+        :to="{ name: 'projects.show' }"
+        class="btn btn-primary mt-auto"
+        >View</router-link
+      >
     </div>
   </div>
 </template>

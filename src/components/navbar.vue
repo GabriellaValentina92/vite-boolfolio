@@ -5,7 +5,7 @@ export default {};
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Project</a>
+      <a class="navbar-brand" href="#">MyDevProjects</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,10 +20,17 @@ export default {};
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link
+              :to="{ name: 'home' }"
+              class="nav-link active"
+              aria-current="page"
+              >Home</router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <router-link :to="{ name: 'projects.index' }" class="nav-link"
+              >project List</router-link
+            >
           </li>
         </ul>
         <form class="d-flex" role="search">
