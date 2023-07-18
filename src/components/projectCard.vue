@@ -20,7 +20,7 @@ export default {
       <h5 class="card-title">{{ objProject.title }}</h5>
       <p class="card-text">{{ objProject.project_description }}</p>
       <router-link
-        :to="{ name: 'projects.show', params: { id: objProject.id } }"
+        :to="{ name: 'projects.show', params: { project: objProject.id } }"
         class="btn btn-primary mt-auto"
         >View</router-link
       >

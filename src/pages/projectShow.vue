@@ -11,7 +11,7 @@ export default {
 
   created() {
     axios
-      .get(this.store.baseUrl + "api/projects/" + this.$route.params.id)
+      .get(this.store.baseUrl + "api/projects/" + this.$route.params.project)
       .then((response) => (this.project = response.data.results));
   },
 };
@@ -19,6 +19,7 @@ export default {
 <template>
   <h1>{{ project.title }}</h1>
   <img :src="project.project_image" alt="" />
+  <p>{{ project.project_description }}</p>
 </template>
 
 <style></style>
