@@ -4,6 +4,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "./pages/AppHome.vue";
 import AppProject from "./pages/AppProject.vue";
 import projectShow from "./pages/projectShow.vue";
+import AppAbout from "./pages/AppAbout.vue";
+import page404 from "./pages/page404.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,6 +14,12 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: AppHome,
+    },
+
+    {
+      path: "/about",
+      name: "about",
+      component: AppAbout,
     },
 
     {
@@ -24,6 +32,12 @@ const router = createRouter({
       path: "/projects/:project",
       name: "projects.show",
       component: projectShow,
+    },
+
+    {
+      path: "/:pathMatch(.*)*",
+      name: "page404",
+      component: page404,
     },
   ],
 });

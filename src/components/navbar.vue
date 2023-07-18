@@ -32,6 +32,12 @@ export default {};
               >project List</router-link
             >
           </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'about' }" class="nav-link"
+              >about</router-link
+            >
+          </li>
         </ul>
         <form class="d-flex" role="search">
           <input
