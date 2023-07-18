@@ -23,6 +23,7 @@ export default {
         .get(this.store.baseUrl + "api/projects", {
           params: {
             page: this.page,
+            q: new URLSearchParams(window.location.search).get("q"),
           },
         })
         .then(
@@ -40,17 +41,7 @@ export default {
   },
 
   created() {
-    console.log(this.arrProject);
-    axios
-      .get(this.store.baseUrl + "api/projects", {
-        params: {
-          page: this.page,
-        },
-      })
-      .then((response) => {
-        this.arrProject = response.data.data;
-        this.nPage = response.data.last_page;
-      });
+    this.getProject();
   },
 
   watch: {
