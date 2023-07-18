@@ -27,8 +27,23 @@ export default {
         })
         .then(
           (response) => (
-            (this.arrProject = response.data.data),
-            (this.nPage = response.data.last_page)
+            (this.arrProject = response.data.results.data),
+            (this.nPage = response.data.results.last_page)
+          )
+        );
+    },
+
+    created() {
+      axios
+        .get(this.store.baseUrl + "api/projects", {
+          params: {
+            page: this.page,
+          },
+        })
+        .then(
+          (response) => (
+            (this.arrProject = response.data.results.data),
+            (this.nPage = response.data.results.last_page)
           )
         );
     },
@@ -39,20 +54,6 @@ export default {
     },
   },
 
-  created() {
-    axios
-      .get(this.store.baseUrl + "api/projects", {
-        params: {
-          page: this.page,
-        },
-      })
-      .then(
-        (response) => (
-          (this.arrProject = response.data.data),
-          (this.nPage = response.data.last_page)
-        )
-      );
-  },
   watch: {
     page() {
       this.getProject();

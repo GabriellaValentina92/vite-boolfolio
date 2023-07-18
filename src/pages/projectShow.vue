@@ -4,17 +4,21 @@ import { store } from "../store";
 export default {
   data() {
     return {
+      project: null,
       store,
     };
   },
 
   created() {
-    axios.get(this.store.baseUrl + "projects/show").then();
+    axios
+      .get(this.store.baseUrl + "api/projects/" + this.$route.params.id)
+      .then((response) => (this.project = response.data.results));
   },
 };
 </script>
 <template>
-  <h1>ciaone</h1>
+  <h1>{{ project.title }}</h1>
+  <img :src="project.project_image" alt="" />
 </template>
 
 <style></style>
