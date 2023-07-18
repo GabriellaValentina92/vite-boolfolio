@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       arrProject: [],
+      arrTypes: [],
       page: 1,
       nPage: 1,
       store,
@@ -34,6 +35,12 @@ export default {
         );
     },
 
+    filterProjectTypes() {
+      axios
+        .get(this.store.baseUrl + "api/types")
+        .then((response) => (this.arrTypes = response.data.data));
+    },
+
     changePages(page) {
       this.page = page;
       this.getProject();
@@ -42,6 +49,7 @@ export default {
 
   created() {
     this.getProject();
+    this.filterProjectTypes();
   },
 
   watch: {
@@ -53,6 +61,23 @@ export default {
 </script>
 
 <template>
+  <form class="typeOptions">
+    <label for="selecttag"> Projects filter</label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      id="selecttag"
+    >
+      <option
+        v-for="types in arrTypes"
+        :key="types.project_type"
+        :value="types.project_type"
+      >
+        {{ types.project_type }}
+      </option>
+    </select>
+  </form>
+
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
     <div class="col" v-for="project in arrProject" :key="project.id">
       <projectCard :objProject="project" />
@@ -81,8 +106,12 @@ export default {
   </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 ul {
   list-style: none;
+}
+
+.typeOptions {
+  margin-bottom: 0.6rem;
 }
 </style>
